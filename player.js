@@ -1,4 +1,4 @@
-var MIDDLE_OCTAVE = 4;
+var MIDDLE_OCTAVE = 3;
 var MIDDLE_A_FREQUENCY = 440.0;
 
 var PITCH_RATIOS = {
@@ -123,7 +123,14 @@ var jukeboxAudioContext = new AudioContext();
 var playSong = function(song, bpm, onComplete) {
 
   if (typeof onComplete == "undefined") {
-    onComplete = function(){};
+    onComplete = function(){
+      // var newSong = prompt("Song finished playing. Give me another song!");
+      // if (newSong === null){throw alert("You've decided not to play anymore songs.");
+      // } else {
+      // var newParseSong = parseSong(newSong);
+      // playSong(newParseSong, 120);
+      // }
+    };
   }
 
   var currNote = 0;
