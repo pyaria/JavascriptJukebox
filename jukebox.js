@@ -1,30 +1,30 @@
 var parseNote = function(songnote){
-  var notebeat = {};
-  var noteArray = songnote.split("");
-  var lastDigit = noteArray[noteArray.length - 1];
-  if (lastDigit == parseInt(lastDigit)) {
-    var beat = noteArray.pop();
-    noteArray.pop();
+  var splitNote = songnote.split("");
+  var possibleBeat = splitNote[splitNote.length - 1];
+  if (possibleBeat == parseInt(possibleBeat)) {
+    var beat = splitNote.pop();
+    splitNote.pop();
   } else {
     var beat = 1;
   }
-  notebeat["pitch"] = noteArray.join("");
-  notebeat["beats"] = parseInt(beat);
-  return notebeat;
+  var note = {};
+  note["pitch"] = splitNote.join("");
+  note["beats"] = parseInt(beat);
+  return note;
 }
 // console.log(parseNote("C#*2"));
 // console.log(parseNote("D"));
 
-var parseSong = function(songstring){
-  var songArray = songstring.split(" ");
-  var notesArray = [];
-  for(var i = 0; i < songArray.length; i++){
-    notesArray.push(parseNote(songArray[i]));
+var parseSong = function(song){
+  var songNotes = song.split(" ");
+  var songNotesArray = [];
+  for(var i = 0; i < songNotes.length; i++){
+    songNotesArray.push(parseNote(songNotes[i]));
   }
-  return notesArray;
+  return songNotesArray;
 }
 // console.log(parseSong("Ab B"));
 //
 var songstring = prompt("Please give me some notes!");
 var song = parseSong(songstring); // have array of object-hashes
-playSong(song, 60);
+playSong(song, 120);
